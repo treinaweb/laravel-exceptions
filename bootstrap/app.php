@@ -1,10 +1,11 @@
 <?php
 
-use App\Exceptions\LimiteExcedidoException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Foundation\Application;
+use App\Exceptions\LimiteExcedidoException;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -19,4 +20,12 @@ return Application::configure(basePath: dirname(__DIR__))
         // $exceptions->render(function(LimiteExcedidoException $e, Request $request) {
         //     return response()->view('erros.limite', [], 500);
         // });
+
+        $exceptions->dontReport([
+            LimiteExcedidoException::class
+        ]);
+
+        // $exceptions->report(function (LimiteExcedidoException $e) {
+        //     File::put('treinaweb.txt', $e->getMessage());
+        // })->stop(); 
     })->create();
