@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Exceptions\LimiteExcedidoException;
 
 Route::get('/deposito/{valor}', function ($valor) {
     // O método do laravel explicitamente lança a exceção
@@ -9,10 +10,11 @@ Route::get('/deposito/{valor}', function ($valor) {
     // return $usuario;
 
     // Lançamos a exceção manualmente
-    // if ($valor > 1000) {
-    //     throw new Exception('O valor não pode ser maior do que 1000');
-    // }
-    // return 'Deposito realizado com sucesso';
+    if ($valor > 1000) {
+        throw new LimiteExcedidoException();
+    }
+
+    return 'Deposito realizado com sucesso';
     
     // O Laravel gera uma exceção por um erro da nossa parte
     //return view('');
