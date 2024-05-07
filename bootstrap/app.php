@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Exceptions\LimiteExcedidoException;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -21,11 +22,31 @@ return Application::configure(basePath: dirname(__DIR__))
         //     return response()->view('erros.limite', [], 500);
         // });
 
+        // $exceptions->render(function(Exception $e, Request $request) {
+        //     if ($request->is('/api/*')) {
+        //         //return response()->json(['mensagem'=>'minha mensagem', 500]);
+        //     }
+
+        //     return response()->view('erros.limite', [], 500);
+        // });
+
+        // $exceptions->shouldRenderJsonWhen(function (Request $request, Throwable $e) {
+        //     if ($request->is('/api/*')) {
+        //         return true;
+        //     }
+     
+        //     return $request->expectsJson();
+        // });
+
         $exceptions->dontReport([
             LimiteExcedidoException::class
         ]);
 
         // $exceptions->report(function (LimiteExcedidoException $e) {
+        //     File::put('treinaweb.txt', $e->getMessage());
+        // })->stop(); 
+
+        // $exceptions->report(function (FileNotFoundException $e) {
         //     File::put('treinaweb.txt', $e->getMessage());
         // })->stop(); 
     })->create();
