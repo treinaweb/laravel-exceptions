@@ -12,11 +12,12 @@ Route::get('/deposito/{valor}', function ($valor) {
     // return $usuario;
 
     // Lançamos a exceção manualmente
-    // if ($valor > 1000) {
-    //     throw new LimiteExcedidoException();
-    // }
+    if ($valor > 1000) {
+        //throw LimiteExcedidoException::mensal();
+        throw LimiteExcedidoException::diario();
+    }
 
-    // return 'Deposito realizado com sucesso';
+    return 'Deposito realizado com sucesso';
     
     // O Laravel gera uma exceção por um erro da nossa parte
     // return view('');
@@ -24,5 +25,5 @@ Route::get('/deposito/{valor}', function ($valor) {
 
     //Lançando HTTP exceptions
     //throw new HttpException(403);
-    abort(403, 'Minha mensagem de teste');
+    // abort(403, 'Minha mensagem de teste');
 });
