@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Exceptions\LimiteExcedidoException;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 Route::get('/deposito/{valor}', function ($valor) {
     // O método do laravel explicitamente lança a exceção
@@ -18,7 +19,10 @@ Route::get('/deposito/{valor}', function ($valor) {
     // return 'Deposito realizado com sucesso';
     
     // O Laravel gera uma exceção por um erro da nossa parte
-    return view('');
-
+    // return view('');
     // File::get('');
+
+    //Lançando HTTP exceptions
+    //throw new HttpException(403);
+    abort(403, 'Minha mensagem de teste');
 });
