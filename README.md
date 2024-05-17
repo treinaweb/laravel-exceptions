@@ -1,6 +1,6 @@
-## Projeto desenvolvido no curso de Laravel - Trabalhando com tramento de exceções
+## Projeto desenvolvido no curso de Laravel - Trabalhando com tratamento de exceções
 
-Desenvolvido no curso de Laravel - Trabalhando com tramento de exceções
+Desenvolvido no curso de Laravel - Trabalhando com tratamento de exceções
 
 ### Instalando o projeto
 
